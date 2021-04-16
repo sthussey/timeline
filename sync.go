@@ -2,10 +2,10 @@ package timeline
 
 import (
 	"fmt"
-	"time"
+	"golang.org/x/sys/unix"
 	"os"
 	"os/signal"
-	"golang.org/x/sys/unix"
+	"time"
 )
 
 func basicTimer(inputs interface{}) error {
@@ -61,8 +61,7 @@ func receiveSignal(inputs interface{}) error {
 	return nil
 }
 
-
-func getDefaultSyncMap() (map[string]func(interface{}) error) {
+func getDefaultSyncMap() map[string]func(interface{}) error {
 	sm := make(map[string]func(interface{}) error)
 	sm["TimerWait"] = basicTimer
 	sm["SignalRecv"] = receiveSignal

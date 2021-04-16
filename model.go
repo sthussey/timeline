@@ -1,16 +1,16 @@
 package timeline
 
 type Timeline struct {
-	syncMap	map[string]func(interface{}) error
-	actionMap	map[string]func(interface{}) error
-	Events		[]Event
+	syncMap   map[string]func(interface{}) error
+	actionMap map[string]func(interface{}) error
+	Events    []Event
 }
 
 type Event struct {
-	Sync	string
-	Action	string
-	Inputs	interface{}
-	Block	bool
+	Sync   string
+	Action string
+	Inputs interface{}
+	Block  bool
 }
 
 func NewTimeline() *Timeline {
@@ -19,19 +19,19 @@ func NewTimeline() *Timeline {
 	return t
 }
 
-func (t *Timeline) AddEvent(e Event){
+func (t *Timeline) AddEvent(e Event) {
 	t.Events = append(t.Events, e)
 }
 
-func (t *Timeline) MapSync(sync string,	syncer func(interface{}) error) {
+func (t *Timeline) MapSync(sync string, syncer func(interface{}) error) {
 	t.syncMap[sync] = syncer
 }
 
-func (t *Timeline) MapAction(action string,	actor func(interface{}) error) {
+func (t *Timeline) MapAction(action string, actor func(interface{}) error) {
 	t.actionMap[action] = actor
 }
 
 func (t *Timeline) setDefaultMaps() {
 	t.syncMap = getDefaultSyncMap()
-//	t.actionMap = getDefaultActionMap()
+	//	t.actionMap = getDefaultActionMap()
 }

@@ -1,3 +1,4 @@
+![Testing Badge](https://github.com/sthussey/timeline/actions/workflows/test.yaml/badge.svg) ![Linting Badge](https://github.com/sthussey/timeline/actions/workflows/linter.yaml/badge.svg)
 # timeline
 
 Library for synchronizing event sequences

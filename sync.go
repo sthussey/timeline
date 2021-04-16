@@ -53,11 +53,12 @@ func receiveSignal(inputs interface{}) error {
 		return fmt.Errorf("Error: signal %s not defined on this platform.", signalName)
 	}
 
-	c := make(chan os.Signal)
+	c := make(chan os.Signal, 2)
 
 	signal.Notify(c, sig)
 	<-c
 
+	signal.Reset(sig)
 	return nil
 }
 

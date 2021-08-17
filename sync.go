@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func basicTimer(inputs interface{}) error {
+func basicTimer(inputs interface{}, vars map[string]interface{}) error {
 	inputMap, ok := inputs.(map[string]string)
 
 	if !ok {
@@ -34,7 +34,7 @@ func basicTimer(inputs interface{}) error {
 	return nil
 }
 
-func receiveSignal(inputs interface{}) error {
+func receiveSignal(inputs interface{}, vars map[string]interface{}) error {
 	inputMap, ok := inputs.(map[string]string)
 
 	if !ok {
@@ -62,8 +62,8 @@ func receiveSignal(inputs interface{}) error {
 	return nil
 }
 
-func getDefaultSyncMap() map[string]func(interface{}) error {
-	sm := make(map[string]func(interface{}) error)
+func getDefaultSyncMap() map[string]func(interface{}, map[string]interface{}) error {
+	sm := make(map[string]func(interface{}, map[string]interface{}) error)
 	sm["TimerWait"] = basicTimer
 	sm["SignalRecv"] = receiveSignal
 	return sm

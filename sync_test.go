@@ -23,7 +23,7 @@ func TestSignalRecv(t *testing.T) {
 	timeoutDur, _ := time.ParseDuration("10s")
 
 	go func() {
-		syncFunc(inputs)
+		syncFunc(inputs, nil)
 		close(sigRecv)
 	}()
 	// Avoid a race condition setting up the signal handler
@@ -58,7 +58,7 @@ func TestTimerWait(t *testing.T) {
 	lowFired := false
 
 	go func() {
-		syncFunc(inputs)
+		syncFunc(inputs, nil)
 		close(timerExp)
 	}()
 

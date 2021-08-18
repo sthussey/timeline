@@ -21,6 +21,12 @@ func logMessage(inputs interface{}, vars map[string]interface{}) error {
 
 	var f io.Writer
 
+	output, ok := inputMap["output"]
+
+	if !ok {
+		return fmt.Errorf("Error: logMessage input requires a 'output' key")
+	}
+
 	if output == "stdout" {
 		f = os.Stdout
 	} else if output == "stderr" {

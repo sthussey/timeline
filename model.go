@@ -66,5 +66,5 @@ func (t *Timeline) MapAction(action string, actor func(interface{}, map[string]i
 
 func (t *Timeline) setDefaultMaps() {
 	t.syncMap = getDefaultSyncMap()
-	//	t.actionMap = getDefaultActionMap()
+	t.actionMap = getDefaultActionMap()
 }

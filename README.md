@@ -57,9 +57,25 @@ to reason about the intent of the timeline.
 
 ### Synchronizers
 
+Synchronizers are functions that work to synchronize the
+timeline with external or environmental conditions.
+
 #### SignalRecv
+
+Synchronize the timeline execution with OS signals that are sent
+to the rcon process. This could used to synchronize an external
+measurement or testing system with described changes made to the
+runtime context.
+
 #### TimerWait
 
+This is a basic timer to pause execution of the timeline for a static
+amount of time described as a Go [ParseDuration format](https://pkg.go.dev/time#ParseDuration).
+
 ### Actions
+
+Actions are functions that can be used to change the runtime context. This
+could be to emulate failed network connectivity, change the contents of
+a file, or just have rcon log a message.
 
 #### LogMessage

@@ -14,7 +14,6 @@ func logMessage(inputs interface{}, vars map[string]interface{}) error {
 	}
 
 	msg, ok := inputMap["message"]
-	output, ok := inputMap["output"]
 
 	if !ok {
 		return fmt.Errorf("Error: logMessage input requires a 'message' key")
